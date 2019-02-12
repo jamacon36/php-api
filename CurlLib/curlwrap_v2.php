@@ -14,11 +14,12 @@ define("AGILE_DOMAIN", "YOUR_AGILE_DOMAIN");  # Example : define("domain","jim")
 define("AGILE_USER_EMAIL", "YOUR_AGILE_USER_EMAIL");
 define("AGILE_REST_API_KEY", "YOUR_AGILE_REST_API_KEY");
 
-function curl_wrap($entity, $data, $method, $content_type) {
-    if ($content_type == NULL) {
+function curl_wrap($entity, $data, $method, $content_type)
+{
+    if ($content_type == null) {
         $content_type = "application/json";
     }
-    
+
     $agile_url = "https://" . AGILE_DOMAIN . ".agilecrm.com/dev/api/" . $entity;
 
     $ch = curl_init();
@@ -52,7 +53,7 @@ function curl_wrap($entity, $data, $method, $content_type) {
             break;
     }
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        "Content-type : $content_type;", 'Accept : application/json'
+        "Content-type:$content_type;", 'Accept:application/json'
     ));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_USERPWD, AGILE_USER_EMAIL . ':' . AGILE_REST_API_KEY);
